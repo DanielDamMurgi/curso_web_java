@@ -1,0 +1,23 @@
+* { /*afecta a toda la página*/
+	margin: 0px;
+	padding: 0px;
+}
+header {
+	background-color: blue;
+	color: white;
+	font-size: 25px;
+}
+nav {
+	margin-left: 20px;
+	margin-right: 20px;
+}
+h1,h2 { /*afecta a dos etiquetas*/
+	padding: 10px;
+}
+.fondo-verde{ /*selector de clase*/
+	background-color: green;
+}
+#barra_lateral{ /*selector de id*/
+	background-color: cyan;
+	float: right;
+}
