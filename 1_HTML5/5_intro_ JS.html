@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="es_ES">
+	<head>
+		<meta charset="utf-8"/>
+		<title>Intro JS</title>
+	</head>
+	<body>
+		<header>
+			<h1>5_intro_JS.html</h1>
+		</header>
+		<input id="identificador"/><br/><br/>
+		<form action="#" method="GET">
+			Nombre: <input id="nombre" type="text" size="20" maxlength="20" required="true"/><br/><br/> <!-- maxlength para tamaño cadena -->
+			Apellidos: <input id="apellidos" type="text" size="40" maxlength="40"/><br/><br/>
+			Teléfono: <input id="telefono" type="number" size="40" maxlength="40"/><br/><br/>
+			Contraseña: <input id="contraseña" type="password" size="40" maxlength="40"/><br/><br/>
+			Correo: <input id="correo" type="email" size="40" maxlength="40"/><br/><br/>
+			CB: <input id="cb" type="checkbox" size="40" maxlength="40"/><br/><br/>
+			Fecha nac.: <input id="fecha_nac" type="date" size="40" maxlength="40"/><br/><br/>
+			Hora: <input id="hora" type="datetime" size="40" maxlength="40"/><br/><br/>
+			Color: <input id="color" type="color" size="40" maxlength="40"/><br/><br/>
+			Fecha y hora: <input id="fecha_hora" type="datetime-local" size="40" maxlength="40"/><br/><br/>
+			Buscar: <input id="buscar" type="search" size="40" maxlength="40"/><br/><br/>
+			Edad: <input id="edad" type="number" min="0" max="100" required placeholder="Introduzca edad"/><br/><br/>
+			Codigo Postal: <input id="edad" type="number" pattern="[0-9]{5}" required placeholder="Introduzca cp"/><br/><br/>
+			
+			<input type="button" value="Pulsar"/>
+			<input type="submit" value="Enviar"/>
+		</form>
+		<script> <!-- Se coloca debajo del codigo dentro de body -->
+			<!-- Las variables se definen con var y se asigna de forma automatica el tipo de dato -->
+			var variable = "Un valor de texto";
+			console.log('Valor variable ' + variable);
+			if (typeof(otraVariable) === "undefined");
+				console.log("Otra variable sin definir");
+				
+			variableGlobal = "Otro valor";
+			console.log(variableGlobal);
+			
+			console.log("-------------------------------------");
+			
+			var miNumero = 250;
+			console.log("miNumero = " + miNumero);
+			
+			if (! isNaN(miNumero)){ 
+				console.log("Número: " + miNumero); //Se ejecutará sila condición no es número.
+			}else{ 
+				alert("No es un número!!"); //Se ejecutará si la condición es u número.
+			}
+			
+			console.log("-------------------------------------");
+			
+			var divCero = 1 / 0; <!-- Al dividir entre 0 sale valor infinito -->
+			console.log("1 / 0 = " + divCero);
+			
+			console.log("-------------------------------------");
+			
+			var numUno = 400;
+			var numDos = 200;
+			console.log(numUno + " + " + numDos + " = " + (numUno + numDos));
+			console.log(numUno + " - " + numDos + " = " + (numUno - numDos));
+			console.log(numUno + " x " + numDos + " = " + (numUno * numDos));
+			console.log(numUno + " / " + numDos + " = " + (numUno / numDos));
+			
+			console.log("-------------------------------------");
+			
+			var cad = "Mesa";
+			console.log(cad.length);
+			console.log(cad.charAt(3));
+			
+		</script>
+	</body>
+</html>
