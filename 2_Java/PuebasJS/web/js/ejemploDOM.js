@@ -8,7 +8,7 @@ body.appendChild(h1);
 h1.appendChild(texto);
 
 jQuery("body").append("<h1>Título jQuery</h1>");
-//jQuery.createElement("h1").text("My H1 Text").appendTo("body");
+//jQuery.createElement("h1").append("My H1 Text").appendTo("body");
 
 document.getElementById("marco").innerHTML = "Otro texto desde JS";
 $("#marco").html(
@@ -19,5 +19,13 @@ var arrayLIs = document.getElementsByClassName("unaClase");
 for (var i = 0; i < arrayLIs.length; i++) {
     arrayLIs[i].innerHTML += " - " + i + "!!";
 }
-
 $(".unaClase").html("Cambiar valor");
+
+/*var arrayLIs = document.getElementsByClassName("unaClase");
+for (var i = 0; i < arrayLIs.length; i++) {
+    $(".unaCLase").each(i,function(i,i){
+        alert(i);
+    });
+}*/
+
+
