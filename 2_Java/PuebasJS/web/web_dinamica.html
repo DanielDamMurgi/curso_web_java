@@ -5,22 +5,50 @@
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <style>
-            .unaClase {background-color: #0000FF};
+            td {
+                background-color: #66ff66;
+            }
+            .tabla{
+                border-collapse: collapse;
+                border: 3px solid black;
+            }
+            td{
+                border: 1px solid black;
+            }
         </style>
     </head>
     <body>
         <div id="marco">TODO write content</div>
-        <ol>
+        <ol class="lista">
             <li class="unaClase">A</li>
             <li class="unaClase">B</li>
             <li class="unaClase">C</li>
         </ol>
-        
-        <input class="botonSumar" type="button" value="Sumar lista"/>
+
+        <input class="botonSumar" type="button" value="Sumar lista">
         <input class="botonDoblar" type="button" value="Doblar lista"/>
         <input class="botonAnadir" type="button" value="Añadir elemento"/>
         <input class="botonReiniciar" type="button" value="Reiniciar lista"/>
         
+        <br/><br/><br/><br/><br/><br/>
+        
+        <table class="tabla">
+            <tr>
+                <td>Celda 1</td>
+                <td>Celda 2</td>
+                <td>Celda 3</td>
+            </tr>
+            <tr>
+                <td>Celda 4</td>
+                <td>Celda 5</td>
+                <td>Celda 6</td>
+            </tr>
+        </table>
+        
+        <br/>
+        
+        <input class="botonOcultar" type="button" value="Ocultar Tabla"/>
+
         <script src="js/jquery-3.3.1.js"></script>
         <script src="js/ejemploDOM.js"></script>
     </body>
