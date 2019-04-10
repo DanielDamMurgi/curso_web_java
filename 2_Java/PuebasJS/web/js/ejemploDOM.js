@@ -47,10 +47,7 @@ $(".botonReiniciar").click(function(){
 });
 
 //AÑADIR ELEMENTOS
-$(".botonAnadir").click(function(){
-    $(".unaClase").each(function(){
-        i = i +1;
-        $("<li>").append("<li class='unaClase'>"+ i +"</i>");
-              
-    });
+jQuery(".botonAnadir").click(function(){  
+    i = i +1;
+    jQuery("ol").append("<li>Núm: "+ i +"</i>").addClass("unaClase");    
 });
