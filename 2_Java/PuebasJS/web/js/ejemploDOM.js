@@ -21,11 +21,36 @@ for (var i = 0; i < arrayLIs.length; i++) {
 }
 $(".unaClase").html("Cambiar valor");
 
-/*var arrayLIs = document.getElementsByClassName("unaClase");
-for (var i = 0; i < arrayLIs.length; i++) {
-    $(".unaCLase").each(i,function(i,i){
-        alert(i);
+//SUMAR LISTA
+var i = 0;
+$(".botonSumar").click(function(){
+    $(".unaClase").each(function(){
+        $(this).text("Núm: " + i);
+        i = i + 1;
     });
-}*/
+});
 
+//DOBLAR LISTA
+$(".botonDoblar").click(function(){
+    $(".unaClase").each(function(){
+        $(this).text("Núm: " + i);
+        i = i * 2;
+    });
+});
 
+//REINICIAR LISTA A CERO
+$(".botonReiniciar").click(function(){
+    $(".unaClase").each(function(){
+        i = 0;
+        $(this).text("Núm: " + i);
+    });
+});
+
+//AÑADIR ELEMENTOS
+$(".botonAnadir").click(function(){
+    $(".unaClase").each(function(){
+        i = i +1;
+        $("<li>").append("<li class='unaClase'>"+ i +"</i>");
+              
+    });
+});
