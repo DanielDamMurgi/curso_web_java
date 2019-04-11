@@ -1,0 +1,43 @@
+﻿<!DOCTYPE html>
+<html lang="es-ES">
+	<head>
+		<title>Formularios HTML5</title>
+		<meta charset="utf-8"/>
+	</head>
+	<body>
+		<header>
+			<h1>Codificaci&oacute;n err&oacute;nea. Pat&aacute;n</h1>
+		</header>
+		<input id="identificador"/><br/>
+		<form action="#" method="GET">
+			Nombre: <input id="nombre" type="text" size="20" maxlength="20" required="true"/><br/><br/>
+			Apellidos: <input id="apellidos" type="text" size="40" maxlength="40" required="true"/><br/><br/>
+			Edad: <input id="edad" type="number" min="10" max="60" required placeholder="Introduzca edad">
+			<input type="button" value="Pulsar"/>
+			<input type="submit" value="Enviar"/>
+		</form>
+		<script>
+			var variable = "Un valor texto";
+			console.log('Valor variable: ' + variable)
+			if (typeof(otraVariable) === "undefined");
+				console.log("otraVariable SIN definir ");
+				
+			variableGlobal = "Otro valor";
+			console.log(variableGlobal);
+			
+			var miNumero = 200.5;
+			console.log("Mi numero = " + miNumero);
+			miNumero = 1 / 0;
+			console.log("Mi numero = " + miNumero);
+			
+			if ( ! isNaN("Hhhh") ) // Si no No es un número 
+			{						// si es un número
+				miNumero = parseInt("Hhh");
+				console.log("Mi numero = " + miNumero);
+			} else {
+				alert("No es un número!!!");
+			}
+			
+		</script>
+	</body>
+</html>
