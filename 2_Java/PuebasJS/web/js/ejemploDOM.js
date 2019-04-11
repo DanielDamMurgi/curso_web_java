@@ -55,7 +55,8 @@ jQuery(".botonAnadir").click(function(){
 //CALLS FUNCTIONS -----------------------------------------
 jQuery(document).ready(colorLista);
 jQuery(document).ready(pulsarBoton);
-jQuert(document).ready(ocultarTabla);
+jQuery(document).ready(ocultarTabla);
+jQuery(document).ready(mostrarTabla);
 
 //FUNCTIONS -----------------------------------------------
 function colorLista() {
@@ -103,6 +104,13 @@ function pulsarBoton() {
 
 function ocultarTabla() {
     $(".botonOcultar").click(function(){
-       $(".tabla").hide(); 
+       $(".tabla").hide("slow"); 
     });
 };
+
+function mostrarTabla(){
+    $(".botonMostrar").click(function(){
+        $(".tabla").show("slow");
+    });
+};
+
