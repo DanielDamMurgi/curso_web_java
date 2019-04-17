@@ -59,7 +59,7 @@ public class DesdeFicheros {
             String cadena = br.readLine();
 
             if (cadena != null) {
-                System.out.println(cadena);
+                //System.out.println(cadena);
 
                 String[] cad = cadena.split("= ");
 
@@ -105,7 +105,7 @@ public class DesdeFicheros {
         FileReader fr = null;
         BufferedReader br = null;
         String aux1 = "", aux2 = "";
-        String baseCad="", alturaCad="", color="";
+        String baseCad = "", alturaCad = "", color = "";
 
         try {
             fichero = new File("C:/figuras/rectangulo.txt");
@@ -116,7 +116,7 @@ public class DesdeFicheros {
             String cadena = br.readLine();
 
             if (cadena != null) {
-                System.out.println(cadena);
+                //System.out.println(cadena);
 
                 String[] cad = cadena.split(", ");
 
@@ -126,33 +126,44 @@ public class DesdeFicheros {
                 for (int i = 0; i < cad.length; i++) {
                     numero.add(String.valueOf(cad[i]));
                 }
-                
-                for (int i = 0; i < numero.size(); i++) {
-                    if(numero.get(i).startsWith("base")){
-                        String a = numero.get(i).trim();
-                        String [] s = a.split(" = ");
-                        baseCad = String.valueOf(s[1]);
-                    }else if(numero.get(i).startsWith("altura")){
-                        String a = numero.get(i).trim();
-                        String [] s = a.split(" = ");
-                        alturaCad = String.valueOf(s[1]);
-                    }else if(numero.get(i).startsWith("color")){
-                        String a = numero.get(i).trim();
-                        String [] s = a.split(" = ");
-                        color = String.valueOf(s[1]);
-                    }
+
+                switch (numero.get(0).toLowerCase().trim()) {
+                    case "rectangulo":
+                        for (int i = 0; i < numero.size(); i++) {
+                            if (numero.get(i).startsWith("base")) {
+                                String a = numero.get(i).trim();
+                                String[] s = a.split(" = ");
+                                baseCad = String.valueOf(s[1]);
+                            } else if (numero.get(i).startsWith("altura")) {
+                                String a = numero.get(i).trim();
+                                String[] s = a.split(" = ");
+                                alturaCad = String.valueOf(s[1]);
+                            } else if (numero.get(i).startsWith("color")) {
+                                String a = numero.get(i).trim();
+                                String[] s = a.split(" = ");
+                                color = String.valueOf(s[1]);
+                            }
+                        }
+                        System.out.println("---------------- RECTANGULO ------------------------");
+                        Rectangulo r3 = new Rectangulo(color, Float.valueOf(baseCad), Float.valueOf(alturaCad));
+                        System.out.println("Área rectángulo: " + r3.calcularArea());
+                        System.out.println("Perímetro rectángulo: " + r3.calcularPerimetro());
+                        System.out.println("Color rectángulo: " + r3.getColor());
+                        System.out.println("-----------------------------------------------------");
+                        break;
+                    case "circulo":
+                        break;
+                    case "cuadrado":
+                        break;
+                    case "triangulo":
+                        break;
+                    default:
+                        break;
                 }
 
                 /*System.out.println("baseCad " + baseCad);
                 System.out.println("alturaCad " + alturaCad);
                 System.out.println("color " + color);*/
-
-                System.out.println("----------------------------------------------------");
-                Rectangulo r3 = new Rectangulo(color, Float.valueOf(baseCad), Float.valueOf(alturaCad));
-                System.out.println("Área rectángulo: " + r3.calcularArea());
-                System.out.println("Perímetro rectángulo: " + r3.calcularPerimetro());
-                System.out.println("Color rectángulo: " + r3.getColor());
-                System.out.println("-----------------------------------------------------");
             }
 
         } catch (Exception ex) {

@@ -19,9 +19,9 @@ public class FigurasConLados extends Figura {
         
     }
     
-    public FigurasConLados(String color){
+    /*public FigurasConLados(String color){
         super(color);
-    }
+    }*/
     
     public FigurasConLados(float base, float altura){
         super("blanco");
@@ -33,6 +33,11 @@ public class FigurasConLados extends Figura {
         super(color);
         this.base = base;
         this.altura = altura;
+    }
+    
+    public FigurasConLados(String textoDeserializar){
+        super();
+        
     }
 
     //GETTERS Y SETTERS ------------------------------------
@@ -50,6 +55,11 @@ public class FigurasConLados extends Figura {
 
     public void setAltura(float altura) {
         this.altura = altura;
+    }
+    
+    @Override
+    public String toString(){
+        return "Rectangulo, base = " + this.getBase() + ", altura = " + this.getAltura() + ", color = " + this.getColor();
     }
     
 }
