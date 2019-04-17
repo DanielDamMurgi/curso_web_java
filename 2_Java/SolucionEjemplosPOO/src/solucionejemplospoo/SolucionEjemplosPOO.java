@@ -18,6 +18,7 @@ public class SolucionEjemplosPOO {
         ObjetosSueltos.calculosSueltos();
         DesdeFicheros.guardarRectangulos();
         DesdeFicheros.leerRectangulo();
+        DesdeFicheros.leerRectanguloDos();
     }
 
 }

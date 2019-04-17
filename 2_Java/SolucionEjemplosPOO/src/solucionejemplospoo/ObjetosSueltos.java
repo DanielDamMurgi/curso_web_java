@@ -17,7 +17,7 @@ import geometria.Triangulo;
 public class ObjetosSueltos {
     
     public static void calculosSueltos(){
-        Rectangulo r1 = new Rectangulo(3, 6);
+        Rectangulo r1 = new Rectangulo("Red", 3, 6);
         System.out.println("Área rectángulo: " + r1.calcularArea());
         System.out.println("Perímetro rectángulo: " + r1.calcularPerimetro());
         System.out.println("Color rectángulo: " + r1.getColor());
