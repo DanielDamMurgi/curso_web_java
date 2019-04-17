@@ -49,9 +49,14 @@ public class DesdeFicheros {
             fichero = new File("C:/figuras/rectangulo.txt");
             fr = new FileReader(fichero);
             br = new BufferedReader(fr);
-
+            
             String linea;
             linea = br.readLine();
+            while(linea != null){
+                linea = "\n" + br.readLine();
+            }
+
+            
             if (linea != null) {
                 System.out.println(linea);
                 String tipoFigura = linea.split(":")[0].trim().toLowerCase();

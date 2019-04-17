@@ -1,15 +1,10 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package ejemplospoo.Geometria;
 
 /**
  *
  * @author German
  */
-public abstract class Figura {
+public abstract class Figura implements Comparable<Figura>{
     
     protected String color;
 
@@ -43,5 +38,15 @@ public abstract class Figura {
     public abstract float calcArea();
     
     public abstract float calcPerimetro();
-
+    
+    @Override
+    public int compareTo(Figura fig){
+        if (this.calcArea() == fig.calcArea()){
+            return 0;
+        }else if(this.calcArea() < fig.calcArea()){
+            return -1;
+        }else{
+            return 1;
+        }
+    }
 }

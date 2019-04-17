@@ -41,4 +41,11 @@ public class Triangulo extends FiguraConLados implements IMostrable{
     public void mostrar() {
         System.out.println("Triangulo.imprimir(): " + this.toString());
     }
+    
+    @Override
+    public String toString() {
+        return "Triangulo: base = " + this.getBase()
+                + ", altura = " + this.getAltura()
+                + ", color = " + this.getColor();
+    }
 }
