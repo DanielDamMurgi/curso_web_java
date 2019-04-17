@@ -9,7 +9,7 @@ package ejemplospoo.Geometria;
  *
  * @author German
  */
-public class FiguraConLados extends Figura {
+public abstract class FiguraConLados extends Figura {
 
     protected float altura;
     protected float base;
@@ -68,5 +68,7 @@ public class FiguraConLados extends Figura {
     public void setBase(float base) {
         this.base = base;
     }
+    
+    
 
 }

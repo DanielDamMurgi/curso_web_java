@@ -20,9 +20,11 @@ public class Rectangulo extends FiguraConLados {
     public Rectangulo(String textoDeserializar) {
         super(textoDeserializar);
     }
+    @Override
     public float calcArea() {
         return this.base * this.altura;
     }
+    @Override
     public float calcPerimetro() {
         return 2 * base + 2 * altura;
     }

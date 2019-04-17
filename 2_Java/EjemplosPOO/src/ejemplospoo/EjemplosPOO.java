@@ -7,6 +7,7 @@ package ejemplospoo;
 
 import ejemplospoo.Geometria.Circulo;
 import ejemplospoo.Geometria.Cuadrado;
+import ejemplospoo.Geometria.LectorFiguras;
 import ejemplospoo.Geometria.Rectangulo;
 import ejemplospoo.Geometria.Triangulo;
 
@@ -21,7 +22,10 @@ public class EjemplosPOO {
      */
     public static void main(String[] args) {
         // ObjetosSueltos.calculosSueltos();
-        DesdeFicheros.guardarRectangulos();
-        DesdeFicheros.leerRectangulo();
+        //DesdeFicheros.guardarRectangulos();
+        //DesdeFicheros.leerRectangulo();
+        LectorFiguras.coleccionesFiguras();
+                
+                
     }    
 }
