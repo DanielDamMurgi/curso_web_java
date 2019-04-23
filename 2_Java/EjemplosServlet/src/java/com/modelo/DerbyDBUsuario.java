@@ -53,18 +53,41 @@ public class DerbyDBUsuario {
 
             Statement sentencia = con.createStatement();
             ResultSet res = sentencia.executeQuery(sqlId);
-            
+
             if (res.next()) {
                 int ultId = res.getInt("ultId");
                 ultId++;
                 String insert = "INSERT INTO usuario (id, nombre, email, password, edad) "
                         + "VALUES (" + ultId + ", '" + usu.getNombre() + "', '" + usu.getEmail() + "', '" + usu.getPassword() + "', " + usu.getEdad() + ")";
-                
+
                 sentencia = con.createStatement();
                 sentencia.executeUpdate(insert);
             }
 
-          return true;
+            return true;
+        } catch (SQLException ex) {
+            System.err.println(">>>>>> " + ex.getMessage());
+            return false;
+        }
+    }
+
+    public boolean cambiarDatosDB(Usuario usu) {
+        try (Connection con = DriverManager.getConnection("jdbc:derby://localhost:1527/UsuariosVNext", "administrador", "1234")) {
+
+            String email = "SELECT email FROM usuario where email = '" + usu.getEmail() + "'";
+
+            Statement sentencia = con.createStatement();
+            ResultSet res = sentencia.executeQuery(email);
+
+            if (res.next()) {
+                String update = "UPDATE usuario SET "
+                        + "password = '" + usu.getPassword() + "', edad = " + usu.getEdad() + ", nombre = '" + usu.getNombre() + "' "
+                        + "WHERE email = '" + usu.getEmail() + "'";
+                sentencia.executeUpdate(update);
+                return true;
+            }else{
+                return false;
+            }
         } catch (SQLException ex) {
             System.err.println(">>>>>> " + ex.getMessage());
             return false;

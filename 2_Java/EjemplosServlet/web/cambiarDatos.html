@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<html>
+    <head>
+        <title>Cambiar datos</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    </head>
+    <body>
+        <h1>Cambiar datos</h1>
+        <form name="form1" method="post" action="http://localhost:8084/EjemplosServlet/cambiarDatos">
+            <table border="1">
+                 <tr><td>E-mail:</td><td>
+                        <input type="email" name="email" id="email" size="100" required="required" value="email@valido.com"/></td></tr>
+                <tr><td>Nombre Nuevo:</td><td>
+                        <input type="text" name="nom" id="nom" size="25" required="required" value="Dani Prueba"/></td></tr>
+                <tr><td>Contraseña Nueva:</td><td>
+                        <input type="password" name="pass" id="pass" size="25" required="required" value="1234"/></td></tr>
+                <tr><td>Edad Nueva:</td><td>
+                        <input type="number" name="eda" id="eda" size="25" required="required" value="22"/></td></tr>
+            </table>
+            <br>
+            <input type="submit" value="Enviar"/>
+        </form>
+    </body>
+</html>
