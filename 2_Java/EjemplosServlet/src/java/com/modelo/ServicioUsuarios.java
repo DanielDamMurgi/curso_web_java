@@ -68,8 +68,6 @@ public class ServicioUsuarios {
         bdUsu = new DerbyDBUsuario();
         //dbUsu.eliminar(usu);
         return true;
-        
-        
-        
+           
     }
 }
