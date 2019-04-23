@@ -27,7 +27,7 @@ public class DerbyDBUsuario {
     public ArrayList<Usuario> listar() {
         try (Connection con = DriverManager.getConnection("jdbc:derby://localhost:1527/UsuariosVNext", "administrador", "1234")) {
             ArrayList<Usuario> usuarios = new ArrayList<>();
-            String consulta = "SELECT id, nombre, edad, email, password FROM usuario";
+            String consulta = "SELECT id, nombre, edad, email FROM usuario";
             Statement sentencia = con.createStatement();
             ResultSet res = sentencia.executeQuery(consulta);
             while (res.next()) {
@@ -35,8 +35,7 @@ public class DerbyDBUsuario {
                 String nombre = res.getString("nombre");
                 String email = res.getString("email");
                 int edad = res.getInt("edad");
-                String password = res.getString("password");
-                Usuario usu = new Usuario(nombre, password, edad, email);
+                Usuario usu = new Usuario(nombre,null, edad, email);
                 usuarios.add(usu);
             }
 
