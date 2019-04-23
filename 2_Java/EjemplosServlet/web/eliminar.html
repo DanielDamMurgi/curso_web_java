@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<html>
+    <head>
+        <title>Eliminar Usuario por EMAIL</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    </head>
+    <body>
+        <h1>Eliminar USUARIO por EMAIL</h1>
+        <form name="form1" method="post" action="http://localhost:8080/JServlet/eliminar">
+            <table border="1">
+                <tr><td>E-mail:</td><td>
+                        <input type="email" name="email" id="email" size="100" required="required" value=""/></td></tr>
+                
+                    <tr><td>Contraseña:</td><td>
+                        <input type="password" name="pass" id="pass" size="25" required="required" value=""/></td></tr>
+     
+            </table>
+            <input type="submit" value="Eliminar"/>
+        </form>
+    </body>
+</html>

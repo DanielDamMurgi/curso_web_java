@@ -70,4 +70,42 @@ public class DerbyDBUsuario {
             return false;
         }
     }
+    
+    
+     public boolean eliminar(Usuario persona){
+        
+        try(Connection con = DriverManager.getConnection(
+             "jdbc:derby://localhost:1527/prueba", 
+             "root", "root")){
+            
+       
+        String sqlID = "SELECT EMAIL, PASSWORD FROM Usuario";
+        Statement s = con.createStatement();
+        ResultSet res = s.executeQuery(sqlID);
+     
+        if (res.next()){
+            String sqlInsert = "DELETE * INTO USUARIO WHERE EMAIL = " + persona.getEmail()+ ", PASSWORD = "+persona.getPassword();
+            
+            System.out.println(" >>>>  Se ha Eliminado el usuario correctamente");
+            s = con.createStatement();
+            s.execute(sqlInsert);
+            return true;
+        }else{
+            return false;
+            
+        }
+        
+       
+        }catch (SQLException ex){
+         System.err.println(" >>>>> ERROR: al emilinar  " + ex.getMessage());
+         
+     } 
+        return false;   
+    }
+    
+    
+    
+    
+    
+    
 }
