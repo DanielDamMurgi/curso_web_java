@@ -12,7 +12,7 @@ public class Usuario {
     private String email;
     
 
-    Usuario(String nom, String password, int edad, String email) {
+    public Usuario(String nom, String password, int edad, String email) {
         this.nombre = nom;
         this.password = password;
         this.edad = edad;
