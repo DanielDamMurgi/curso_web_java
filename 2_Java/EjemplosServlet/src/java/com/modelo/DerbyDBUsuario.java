@@ -27,15 +27,16 @@ public class DerbyDBUsuario {
     public ArrayList<Usuario> listar() {
         try (Connection con = DriverManager.getConnection("jdbc:derby://localhost:1527/UsuariosVNext", "administrador", "1234")) {
             ArrayList<Usuario> usuarios = new ArrayList<>();
-            String consulta = "SELECT id, nombre, edad, email FROM usuario";
+            String consulta = "SELECT id, nombre, edad, email, password FROM usuario";
             Statement sentencia = con.createStatement();
             ResultSet res = sentencia.executeQuery(consulta);
             while (res.next()) {
                 int id = res.getInt("id");
                 String nombre = res.getString("nombre");
                 String email = res.getString("email");
+                String password = res.getString("password");
                 int edad = res.getInt("edad");
-                Usuario usu = new Usuario(nombre,null, edad, email);
+                Usuario usu = new Usuario(nombre, password, edad, email);
                 usuarios.add(usu);
             }
 
@@ -84,7 +85,7 @@ public class DerbyDBUsuario {
                         + "WHERE email = '" + usu.getEmail() + "'";
                 sentencia.executeUpdate(update);
                 return true;
-            }else{
+            } else {
                 return false;
             }
         } catch (SQLException ex) {
@@ -92,42 +93,32 @@ public class DerbyDBUsuario {
             return false;
         }
     }
-    
-    
-     public boolean eliminar(Usuario persona){
-        
-        try(Connection con = DriverManager.getConnection(
-             "jdbc:derby://localhost:1527/prueba", 
-             "root", "root")){
-            
-       
-        String sqlID = "SELECT EMAIL, PASSWORD FROM Usuario";
-        Statement s = con.createStatement();
-        ResultSet res = s.executeQuery(sqlID);
-     
-        if (res.next()){
-            String sqlInsert = "DELETE * INTO USUARIO WHERE EMAIL = " + persona.getEmail()+ ", PASSWORD = "+persona.getPassword();
-            
-            System.out.println(" >>>>  Se ha Eliminado el usuario correctamente");
-            s = con.createStatement();
-            s.execute(sqlInsert);
-            return true;
-        }else{
-            return false;
-            
+
+    public boolean eliminar(Usuario persona) {
+
+        try (Connection con = DriverManager.getConnection("jdbc:derby://localhost:1527/UsuariosVNext", "administrador", "1234")) {
+
+            String sqlID = "SELECT EMAIL, PASSWORD FROM Usuario WHERE EMAIL = '" + persona.getEmail() + "' AND PASSWORD = '" + persona.getPassword() + "'";
+            Statement s = con.createStatement();
+            ResultSet res = s.executeQuery(sqlID);
+
+            if (res.next()) {
+                String sqlInsert = "DELETE FROM USUARIO WHERE EMAIL = '" + persona.getEmail() + "'";
+
+                System.out.println(" >>>>  Se ha Eliminado el usuario correctamente");
+                s = con.createStatement();
+                s.executeUpdate(sqlInsert);
+                return true;
+            } else {
+                return false;
+
+            }
+
+        } catch (SQLException ex) {
+            System.err.println(" >>>>> ERROR: al emilinar  " + ex.getMessage());
+
         }
-        
-       
-        }catch (SQLException ex){
-         System.err.println(" >>>>> ERROR: al emilinar  " + ex.getMessage());
-         
-     } 
-        return false;   
+        return false;
     }
-    
-    
-    
-    
-    
-    
+
 }

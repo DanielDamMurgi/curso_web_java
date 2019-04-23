@@ -76,6 +76,8 @@ public class LoginServlet extends HttpServlet {
 
             out.println("</body>");
             out.println("</html>");
+        } catch (Exception ex ) {
+            System.out.println("com.servlets.LoginServlet.processRequest()" + ex.getMessage());
         }
     }
 

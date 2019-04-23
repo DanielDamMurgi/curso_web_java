@@ -6,6 +6,7 @@
 package com.servlets;
 
 import com.modelo.ServicioUsuarios;
+import com.modelo.Usuario;
 import java.io.IOException;
 import java.io.PrintWriter;
 import javax.servlet.ServletException;
@@ -51,8 +52,11 @@ public class EliminarServlet extends HttpServlet {
                 }
                 if (ServicioUsuarios.getInstancia().validacionPasswd(email, pass)) {
                     
+                    if (ServicioUsuarios.getInstancia().eliminarUsuarios(new Usuario(null, pass, 0, email))) {
+                        
                         out.println("<h1>USUARIO Eliminado Correctamente!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!<h1>");
                         
+                    }
                               
                 } else {
                     out.println("<p style='background-color: red'> CONTRASEÑA o USUARIO INCORRECTO </p>");

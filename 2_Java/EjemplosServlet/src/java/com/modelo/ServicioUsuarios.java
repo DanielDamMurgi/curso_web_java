@@ -82,9 +82,8 @@ public class ServicioUsuarios {
 
     
     public boolean eliminarUsuarios(Usuario usu) {
-        bdUsu = new DerbyDBUsuario();
-        //dbUsu.eliminar(usu);
-        return true;
+        
+        return bdUsu.eliminar(usu);
            
     }
 }
