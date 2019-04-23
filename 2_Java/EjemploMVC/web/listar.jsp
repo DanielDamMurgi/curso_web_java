@@ -1,22 +1,16 @@
-<%-- 
-    Document   : listar
-    Created on : 23-abr-2019, 15:47:27
-    Author     : Formacion
---%>
-
-<%@page import="java.util.ArrayList"%>
-<%@page import="com.modelo.Usuario"%>
-<%@page import="com.modelo.ServicioUsuarios"%>
+<%@include file = "head.jsp" %>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 
-<%@include file="header.jsp" %>
+<%
+    ArrayList<Usuario> listaUsu = ServicioUsuarios.getInstancia().listar();       
+%>
+
+<html>
+    <%= head() %>
+    <body>  
+        <%@include file = "header.jsp" %>
+
         <%-- Comentario JSP --%>
-        
-        <%
-            ArrayList<Usuario> listaUsu = ServicioUsuarios.getInstancia().listar();
-            
-        %>
-        
         <table>
             <thead>
                 <th>Nombre</th>
@@ -33,3 +27,4 @@
                 <%
                     }
                 %>
+        </table>

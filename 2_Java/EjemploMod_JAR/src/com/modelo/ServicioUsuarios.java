@@ -35,12 +35,22 @@ public class ServicioUsuarios {
     //Codigo de la clase
     private ArrayList<Usuario> listaUsuarios;
 
-    public boolean addUsuario(String nom, String password, int edad, String email) {
-        Usuario nuevoUsu = new Usuario(nom, password, edad, email);
-        this.listaUsuarios.add(nuevoUsu);
-        bdUsu = new DerbyDBUsuario();
-        bdUsu.anadir(nuevoUsu);
-        return true;
+    public boolean addUsuario(String nom, String password, String edad, String email) {
+        try {
+            if (nom.equals("") || password.equals("") || edad.equals("") || email.equals("")) {
+                return false;
+            } else {
+                int iEdad = Integer.parseInt(edad);
+                Usuario nuevoUsu = new Usuario(nom, password, iEdad, email);
+                this.listaUsuarios.add(nuevoUsu);
+                bdUsu = new DerbyDBUsuario();
+                bdUsu.anadir(nuevoUsu);
+                return true;
+            }
+        } catch (Exception ex) {
+            System.err.println("<< Error no se ha podido crear el usuario" + ex.getMessage());
+            return false;
+        }
     }
 
     public boolean validacionPasswd(String email, String passwd) {
@@ -55,7 +65,7 @@ public class ServicioUsuarios {
     public boolean cambiarDatos(Usuario usu) {
         int pos = 0;
         if (bdUsu.cambiarDatosDB(usu)) {
-            
+
             for (int i = 0; i < listaUsuarios.size(); i++) {
                 if (listaUsuarios.get(i).getEmail().equals(usu.getEmail())) {
                     pos = i;
@@ -78,16 +88,14 @@ public class ServicioUsuarios {
     public ArrayList<Usuario> getListaUsuarios() {
         return listaUsuarios;
     }
-    
 
-    
     public boolean eliminarUsuarios(Usuario usu) {
-        
+
         return bdUsu.eliminar(usu);
-           
+
     }
-    
-    public ArrayList<Usuario> listar(){
+
+    public ArrayList<Usuario> listar() {
         return this.listaUsuarios;
     }
 }
