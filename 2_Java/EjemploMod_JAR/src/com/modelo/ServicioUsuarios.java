@@ -41,11 +41,31 @@ public class ServicioUsuarios {
                 return false;
             } else {
                 int iEdad = Integer.parseInt(edad);
-                Usuario nuevoUsu = new Usuario(nom, password, iEdad, email);
-                this.listaUsuarios.add(nuevoUsu);
+                Usuario nuevoUsu = new Usuario(null, nom, iEdad, email, password);
+                //this.listaUsuarios.add(nuevoUsu);
                 bdUsu = new DerbyDBUsuario();
-                bdUsu.anadir(nuevoUsu);
-                return true;
+                boolean creado = bdUsu.anadir(nuevoUsu);
+                listaUsuarios = bdUsu.listar();
+                return listaUsuarios != null && creado;
+            }
+        } catch (Exception ex) {
+            System.err.println("<< Error no se ha podido crear el usuario" + ex.getMessage());
+            return false;
+        }
+    }
+    
+    public boolean modificarUsuario(String id,String nom, String edad, String email, String password) {
+        try {
+            if (nom.equals("") || password.equals("") || edad.equals("") || email.equals("")) {
+                return false;
+            } else {
+                int iId = Integer.parseInt(id);
+                int iEdad = Integer.parseInt(edad);
+                Usuario nuevoUsu = new Usuario(iId, nom, iEdad, email, password);
+                bdUsu = new DerbyDBUsuario();
+                boolean modificado = bdUsu.cambiarDatosDB(nuevoUsu);
+                listaUsuarios = bdUsu.listar();
+                return listaUsuarios != null && modificado;
             }
         } catch (Exception ex) {
             System.err.println("<< Error no se ha podido crear el usuario" + ex.getMessage());
@@ -62,25 +82,6 @@ public class ServicioUsuarios {
         return false;
     }
 
-    public boolean cambiarDatos(Usuario usu) {
-        int pos = 0;
-        if (bdUsu.cambiarDatosDB(usu)) {
-
-            for (int i = 0; i < listaUsuarios.size(); i++) {
-                if (listaUsuarios.get(i).getEmail().equals(usu.getEmail())) {
-                    pos = i;
-                    break;
-                }
-            }
-            listaUsuarios.set(pos, usu);
-            //listaUsuarios.clear();
-            //this.listaUsuarios = bdUsu.listar();
-            return true;
-        } else {
-            return false;
-        }
-    }
-
     public int cantidadUsuarios() {
         return listaUsuarios.size();
     }
@@ -89,9 +90,20 @@ public class ServicioUsuarios {
         return listaUsuarios;
     }
 
-    public boolean eliminarUsuarios(Usuario usu) {
-
-        return bdUsu.eliminar(usu);
+    public Usuario obtenerUno(String email){
+        return bdUsu.obtenerUno(email);
+    }
+        
+    public boolean eliminarUsuarios(String id) {
+        
+        if (id.equals("")) {
+            return false;
+        }else{
+            int iId = Integer.parseInt(id);
+            boolean eliminado = bdUsu.eliminar(iId);
+            this.listaUsuarios = bdUsu.listar();
+            return listaUsuarios != null && eliminado;
+        }
 
     }
 
