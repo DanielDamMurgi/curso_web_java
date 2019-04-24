@@ -19,7 +19,7 @@ import javax.servlet.http.HttpSession;
  *
  * @author Formacion
  */
-public class UsuariosController extends HttpServlet {
+public class UsuariosController extends HttpServlet { //SERVIDOR
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -36,6 +36,7 @@ public class UsuariosController extends HttpServlet {
         try (PrintWriter out = response.getWriter()) {
             String accion = request.getParameter("accion");
             
+            String id = request.getParameter("id");
             String nom = request.getParameter("nom");
             String pass = request.getParameter("pass");
             String edad = request.getParameter("eda");
@@ -49,10 +50,12 @@ public class UsuariosController extends HttpServlet {
                         HttpSession sesion = request.getSession();
                         Usuario usu = ServicioUsuarios.getInstancia().obtenerUno(email);
                         sesion.setAttribute("usuario", usu);
-                        request.getRequestDispatcher("index.jsp").forward(request, response);
                     } else {
-                        out.println("<h3>No se ha iniciado sesion</h3>");
+                        System.out.println("<h3>Login incorrecto</h3>");
+                        request.getSession().setAttribute("msj_error", "Login incorrecto");
+                        
                     }
+                    request.getRequestDispatcher("index.jsp").forward(request, response);
                     break;
                 case "registro":
                     if (ServicioUsuarios.getInstancia().addUsuario(nom, pass, edad, email)) {
@@ -68,6 +71,10 @@ public class UsuariosController extends HttpServlet {
                         }else {
                         out.println("<p style='background-color: red'> CONTRASEÑA o USUARIO INCORRECTO </p>");
                     }
+                    break;
+                case "PUT": //Modificar
+                    ServicioUsuarios.getInstancia().modificarUsuario(id, nom, edad, email, pass);
+                    request.getRequestDispatcher("listar.jsp");
                     break;
                 default:
                     break;

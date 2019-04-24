@@ -62,7 +62,6 @@ public class ServicioUsuarios {
                 int iId = Integer.parseInt(id);
                 int iEdad = Integer.parseInt(edad);
                 Usuario nuevoUsu = new Usuario(iId, nom, iEdad, email, password);
-                bdUsu = new DerbyDBUsuario();
                 boolean modificado = bdUsu.cambiarDatosDB(nuevoUsu);
                 listaUsuarios = bdUsu.listar();
                 return listaUsuarios != null && modificado;

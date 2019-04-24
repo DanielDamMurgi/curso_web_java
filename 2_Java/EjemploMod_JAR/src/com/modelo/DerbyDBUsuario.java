@@ -93,7 +93,7 @@ public class DerbyDBUsuario {
     public boolean cambiarDatosDB(Usuario usu) {
         try (Connection con = DriverManager.getConnection(Constantes.CONEX_DB, Constantes.USUARIO_DB, Constantes.PASSWORD_DB)) {
 
-            String update = "UPDATE usuario SET nombre = ?, edad = ?,email = ? , password = ?, WHERE id = ?";
+            String update = "UPDATE usuario SET nombre = ?, edad = ?,email = ? , password = ? WHERE id = ?";
 
             PreparedStatement st = con.prepareStatement(update);
             st.setString(1, usu.getNombre());
